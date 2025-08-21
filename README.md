@@ -14,6 +14,7 @@ End of the lab: create and asses a basic ML classification model in Python
 2) #### Load datasets:
     - Tutorials Point: How can scikit-learn library be used to load data in Python (https://www.tutorialspoint.com/how-can-scikit-learn-library-be-used-to-load-data-in-python)
     - Feature Selection in Python with Scikit-Learn (https://www.geeksforgeeks.org/machine-learning/feature-selection-in-python-with-scikit-learn/)
+    - 5 Different Ways to Load Datasets: (https://blog.finxter.com/5-best-ways-to-load-data-using-the-scikit-learn-library-in-python/)
     - Future reference -> User Guide: 8. Dataset loading utilities (https://scikit-learn.org/stable/datasets.html)
 
 3) #### Preprocess data
