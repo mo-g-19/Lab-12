@@ -29,4 +29,31 @@
 Step 1: Data cleaning
     Correct errors/inconsistencies => accurate and complete
         Ex:
-            
+            Handling missing values
+            Removing duplicates
+            Correcting inconsistent formats"""
+import pandas as pd
+
+#Creating a manual dataset
+data = pd.DataFram({
+    'name': ['John', 'Jane', 'Jack', 'John', None],
+    'age': [28, 34, None, 28, 22],
+    'purchase_amount': [100.5, None, 85.3, 100.5, 50.0],
+    'date_of_purchase' : ['2023/12/01', '2023/12/02', '2023/12/01', '2023/12/01', '2023/12/03']
+    })
+
+#Handling missing values using mean imputation for 'age' and 'purchase_amount'
+imputer = SimpleImputer(strategy='mean')
+data[['age', 'purchase_amount']] = imputer.fit_transform(data[['age', 'purchase_amount']])
+
+#Removing duplicate rows
+data = data.drop_duplicates()
+
+#Correcting inconsistent date formats
+data['date_of_purchase'] = pd.to_datetime(data['date_of_purchase'], errors='coerce')
+
+print(data)
+
+#>>Output: 5 people in rows with col of name, age, purchase_amount, and date_or_purchase
+#   John is not repeated TWICE; ONLY SHOW AS ONCE
+#   Can see output in image on site
