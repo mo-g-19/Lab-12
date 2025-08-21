@@ -18,7 +18,8 @@ End of the lab: create and asses a basic ML classification model in Python
     - Future reference -> User Guide: 8. Dataset loading utilities (https://scikit-learn.org/stable/datasets.html)
 
 3) #### Preprocess data
-    -
+    - Geeks for Geeks: Data Preprocessing in Python (https://www.geeksforgeeks.org/machine-learning/data-preprocessing-machine-learning-python/)
+    - Data Camp: Data Preprocessing: Complete Guide with Ex (https://www.datacamp.com/blog/data-preprocessing)
     - Future reference -> User Guide: 7.3 Preprocessing data (https://scikit-learn.org/stable/datasets.html)
 
 4) #### Select and train a classification model
