@@ -1,0 +1,81 @@
+Feature Selection: https://www.geeksforgeeks.org/machine-learning/feature-selection-in-python-with-scikit-learn/
+Process id + select subset relevant features => model constructuon
+    Goal: enhance performance reduce overfitting, imporve accurace, and reduce train time
+
+Why important
+    Improve performance, reduce overfit (less feaures, less loikely learn noise from training), faster computation
+
+Types feature selection
+    Filter methods: statistical techniques => eval relevance features independent model
+        Common: correlation coefficients, chi-square tests, and mutual info
+    Wrapper Methods: pdictive model eval feature subset + select best-performing combo
+        Incldue: recursive feature elimination (RFE) and forward/backward feature selection
+    Embedded methods: feature selection through model training
+        Include: Lasso (L1 regularization) and feature importance from tree-based models
+
+Feature Selection Techniques - Scikit-Learn tools
+    Univariate Selection (https://www.geeksforgeeks.org/data-analysis/univariate-bivariate-and-multivariate-data-and-its-analysis/):
+        evaluates each feature individually determine importance.
+        Ex: SelectKBest and Select Percentile (select top features based statistical tests)
+    Recursive Feature Elimination (RFE): a wrapper method recursively
+        remove least important feature based model's perfomance.
+        Repeatedly build a model and eliminate weakest feature until
+        deired number features reached
+    Feature Importance from Tree-based Models: (like decision trees and
+        random forests) can provide feature importance scores, indicate
+        importance each feature in make predictions
+Practical Implementation Feature Selection
+    Data Preperation: load a dataset and split into features
+        EX: data preparation (load dataset and split features and target var)
+            import pandas as pd
+            from sklearn.datasets import load_iris
+            from sklearn.model_selection import train_test_split
+
+            #Load dataset
+            data = load_iris()
+            X = pd.DataFrame(data.data, columns=data.feature_names)
+            y = data.target
+
+            #Split data into training and testing sets
+            X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+
+        Method 1: Univariate Selection in Python with Scikit-Learn
+        Use SelectKBest with chi-square test to select top 2 features
+            from sklearn.feature_selection import SelectKBest, chi2
+
+            # Apply SelectKBest with chi2 and top 2 features
+            select_k_best = SelectKBest(score_func=chi2, k=2)
+            X_train_k_best = select_k_best.fit_transform(X_train, y_train)
+
+            print("Selected features:", X_train.columns[select_k_best.get_support()])
+            #>>Selected features: Index(['petal length (cm)', 'petal width (cm)'], dtype='object')
+
+        Method 2: Recursive Feature Elimination
+        Use RFE with logistic regresion model to select top 2 features
+            from sklearn.feature_selection import RFE
+            from sklearn.linear_model import LogisticRegression
+
+            #Apply RFE with Logistic regression to select the top 2 features
+            model = LogeisticRegression()
+            rfe = RFE(model, n_features_to_select=2)
+            X_Train_rfe = rfe.fit_transform(X_train, y_train)
+
+            print("Selected feature:", X_train.columns[rfe.get_support()])
+            #>>Selected features: Index(['petal length (cm)', 'petal width (cm)'], dtype='object')
+
+        Method 3: Tree-Based Feature Importance
+        Use Random Forest Classifier determine feature importance
+            from sklearn.ensemble import RandomForestClassifier
+
+            # Train random forest and get feature importances
+            model = RandomForestClassifier()
+            model.fit(X_train, y_train)
+            importances = model.feature_importances_
+
+            # Display feature importances
+            feature_importances = pd.Series(importances, index=X_train.columns)
+            print(feature_importances.sort_values(ascending=False))
+            #>>petal length (cm)    0.480141
+            #  petal width (cm)     0.378693
+            #  sepal length (cm)    0.092960
+            #  sepal width (cm)     0.048206
