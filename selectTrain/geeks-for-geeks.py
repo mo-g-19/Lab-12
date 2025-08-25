@@ -148,7 +148,7 @@ Random Forest - ensemble method combines multiple decision trees imporve model's
             Interpretability: Ensemble nature challenge interpret reasoning behind individual predictions compared single tree
             Bias in Imbalanced Datasets: Random forest biased toward majority class in imbalanced datasets, affect performance for minority class
 Implementing - multiple decision trees use random subsets of data + features, average predictions"""
-from sklearn.ensemble import RandomForestClassifier #Remember using specifically the Random Forest Classifier before *This is was in the User Guide or something along those lines
+from sklearn.ensemble import RandomForestClassifier #Remember using specifically the Random Forest Classifier before *This is was in the User Guide (specifically fitting + predicting and automatic parameter searches)
 
 forest = RandomForestClassifier(n_estimators=100, max_depth=5, random_state=42)
 forrest.fit(X_train, y_train)
