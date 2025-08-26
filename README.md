@@ -32,3 +32,5 @@ End of the lab: create and asses a basic ML classification model in Python
     - Future reference -> User Guide: 3.4 https://scikit-learn.org/stable/modules/model_evaluation.html
 
 Each section will have it's own directory to help with organizing files
+
+Analyzing a Classification Model (Recognizing hand-written digits) - https://scikit-learn.org/stable/auto_examples/classification/plot_digits_classification.html#sphx-glr-auto-examples-classification-plot-digits-classification-py
