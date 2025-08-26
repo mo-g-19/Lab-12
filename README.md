@@ -27,8 +27,8 @@ End of the lab: create and asses a basic ML classification model in Python
     - Future reference (choose a model) -> Choosing the right estimator: https://scikit-learn.org/stable/machine_learning_map.html#ml-map
 
 5) #### Multiple references for evaluate model performance....
-    - Youtube video: https://www.youtube.com/watch?v=Dr7lbdgzpWM
     - Geeks for Geeks: https://www.geeksforgeeks.org/machine-learning/sklearn-classification-metrics/
+    - Youtube video: https://www.youtube.com/watch?v=Dr7lbdgzpWM
     - Future reference -> User Guide: 3.4 https://scikit-learn.org/stable/modules/model_evaluation.html
 
 Each section will have it's own directory to help with organizing files
