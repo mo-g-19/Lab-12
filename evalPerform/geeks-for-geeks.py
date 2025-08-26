@@ -123,4 +123,78 @@ ROC Curve
             Often conjunction with precision, recall, and F1-Score -> complete understanding model performance"""
 
 """Implementation classification Metrics
-Import Necessary libraries"""
+Import Necessary libraries
+    Several model eval tasks (F1 score, accuracy matrix, precision matrix, recall matrix, and ROC curve)
+Make Predictions
+    Define 2 lists: y_pred (list predicted class labels) and y_true (list actual class labels)
+    Include actual + anticipated binary classification results -> recall, accuracy, and precision"""
+#True labels
+y_true = [0, 1, 1, 0, 1, 0, 0, 1, 1, 0]
+#Predicted labels
+y_pred = [0, 1, 0, 0, 1, 1, 0, 1, 1, 1]
+
+"""
+Calculate Metrics"""
+#Confusion Matrix - row -> actual Neg + actual Pos; col -> predict Neg + predict Pos
+cm = confusion_matrix(y_true, y_pred)
+
+#Accuracy -> TP + TN / all
+accuracy = accuracy_score(y_true, y_pred)
+
+#Precision -> TP / (TP+FP)
+precision = precision_score(y_true, y_pred)
+
+#Recall -> TP / (TP+FN)
+recall = recall_score(y_true, y_pred)
+
+#F1-Score -> 2* (Precision*Recall)/(Precision+Recall)
+f1 = f1_score(y_true, y_pred)
+
+#ROC Curve and AUC -> different threshold classifications (x -> neg incorrect + y -> pos correct)
+fpr, tpr, thresholds = roc_curve(y_true, y_pred)
+roc_auc = auc(fpr, tpr)
+
+print(&quot;Confusion Matrix:&quot;)
+print(cm)
+print(&quot;Accuracy:&quot;, accuracy)
+print(&quot;Precision:&quot;, precision)
+print(&quot;Recall:&quot;, recall)
+print(&quot;F1-Score:&quot;, f1)
+print(&quot;ROC AUC:&quot;, roc_auc)
+
+#Example shows
+#   All the metrics explained above
+#   *ROC AUC -> capability distinguish positive + negative classes (1 - 0.5 scale)
+
+"""
+Plotting ROC-AUC Curve"""
+import matplotlib.pyplot as Plot
+
+#Plot ROC curve
+plt.figure()
+
+#Plot the ROC curve with a label displaying the ROC AUC score
+plt.plot(fpr, tpr, color='darkorange', lw=2, label='ROC curve (area = %0.2f)' % roc_auc)
+
+#Plot a dashed diagonal line for reference
+plt.plot([0, 1], [0,1], color='navy', lw=2, linestyle='--')
+
+#Set the x and y-axis limits
+plt.xlim([0.0, 1.0])
+plt.ylim([0.0, 1.05])
+
+#Label the x and y-axes
+plt.xlabel('False Positive Rate')
+plt.ylabel('True Positive Rate')
+
+#Set the title of the plot
+plt.title('Reciever Operating Characteristic')
+
+#Add a legend to the plot
+plt.legend(loc='lower right')
+
+#Display ROC curve plot
+plt.show()
+
+#>>Output: disscussed above in graph form
+#   *The dotted line = 0.5 (value for completely guessing)
