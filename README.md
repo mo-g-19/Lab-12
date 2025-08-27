@@ -2,9 +2,9 @@
 
 ## Objective
 - Load datasets
-- preprocess data
-- select and train a classification algorithm
-- evaluate model performance using metrics like accuracy and confusion matrix
+- Preprocess data
+- Select and train a classification algorithm
+- Evaluate model performance using metrics like accuracy and confusion matrix
 
 End of the lab: create and asses a basic ML classification model in Python
 
